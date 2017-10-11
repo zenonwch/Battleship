@@ -21,6 +21,8 @@ public class PlacementServlet extends HttpServlet {
     @Inject
     private PlayerManager playerManager;
 
+    @Override
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
         final String[] addresses = request.getParameterValues("cell");

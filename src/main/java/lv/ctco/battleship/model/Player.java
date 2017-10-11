@@ -6,6 +6,7 @@ public class Player implements Serializable {
     private static final long serialVersionUID = 1;
 
     private final Field myField = new Field();
+    private final Field opponentField = new Field();
 
     private String name;
     private boolean ready = false;
@@ -20,6 +21,10 @@ public class Player implements Serializable {
 
     public Field getMyField() {
         return myField;
+    }
+
+    public Field getOpponentField() {
+        return opponentField;
     }
 
     public boolean isReady() {
