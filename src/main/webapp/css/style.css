@@ -1,0 +1,63 @@
+.cell > input:checked +span {
+    display: block !important;
+}
+
+.cell {
+    display: block;
+    height: 23px;
+    width: 23px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+.cell > input {
+    display: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.cell > span {
+    display: none;
+    width: 21px;
+    height: 21px;
+    background-color: gray;
+    align-content: center;
+    margin: -11px 0 0 -10px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+.field {
+    border: 1px solid black;
+}
+
+.field td {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+    border: 1px dotted gray;
+    text-align: center;
+}
+
+.SHIP {
+    background-color: gray;
+}
+
+.HIT {
+    background-color: darkred;
+}
+
+.MISS {
+    background-color: aqua;
+}
+
+div.error {
+    width: 250px;
+    color: #bf0707;
+    background-color: #f7d7de;
+}
