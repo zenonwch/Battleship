@@ -6,13 +6,17 @@ import lv.ctco.battleship.model.PlayerManager;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static lv.ctco.battleship.util.GameHelper.AJAX_REDIRECT_HEADER;
+
 @WebServlet(name = "FireServlet", urlPatterns = "/fire")
+@MultipartConfig
 @SuppressWarnings("MethodDoesntCallSuperMethod")
 public class FireServlet extends HttpServlet {
 
@@ -25,8 +29,6 @@ public class FireServlet extends HttpServlet {
         final String addr = request.getParameter("addr");
         final Game game = playerManager.getGame();
         game.fire(addr);
-
-        response.sendRedirect(request.getContextPath() + "/fire");
     }
 
     @Override
@@ -37,10 +39,13 @@ public class FireServlet extends HttpServlet {
         final Player sessionPlayer = playerManager.getPlayer();
 
         if (game.getWinner() != null) {
-            response.sendRedirect(request.getContextPath() + "/eog");
+            final String redirectUrl = request.getContextPath() + "/eog";
+            response.addHeader(AJAX_REDIRECT_HEADER, redirectUrl);
+            request.getRequestDispatcher("/eog").include(request, response);
         }
-        else  //noinspection ObjectEquality
-            if (currentPlayer == sessionPlayer) {
+
+        //noinspection ObjectEquality
+        if (currentPlayer == sessionPlayer) {
             request.getRequestDispatcher("/WEB-INF/fire.jsp").include(request, response);
         } else {
             request.getRequestDispatcher("/WEB-INF/wait-opponent-fire.jsp")

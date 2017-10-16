@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static lv.ctco.battleship.util.GameHelper.AJAX_REDIRECT_HEADER;
+
 @WebServlet(name = "WaitOpponentShipsServlet",
         urlPatterns = "/wait-opponent-ships")
 public class WaitOpponentShipsServlet extends HttpServlet {
@@ -23,11 +25,11 @@ public class WaitOpponentShipsServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (playerManager.getGame().shipsReady()) {
-            //noinspection NestedMethodCall
-            response.sendRedirect(request.getContextPath() + "/fire");
-        } else {
-            request.getRequestDispatcher("/WEB-INF/wait-opponent-ships.jsp")
-                    .include(request, response);
+            final String redirectUrl = request.getContextPath() + "/fire";
+            response.addHeader(AJAX_REDIRECT_HEADER, redirectUrl);
         }
+
+        request.getRequestDispatcher("/WEB-INF/wait-opponent-ships.jsp")
+                .include(request, response);
     }
 }

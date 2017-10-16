@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-	<c:set var="refreshTimeout" value="3" scope="page"/>
 	<%@ include file="components/head.jsp" %>
 	<body>
 		<table>
@@ -17,5 +16,7 @@
 				</td>
 			</tr>
 		</table>
+		<script>let timeout = 1;</script>
+		<%@ include file="autorefresh.jsp" %>
 	</body>
 </html>

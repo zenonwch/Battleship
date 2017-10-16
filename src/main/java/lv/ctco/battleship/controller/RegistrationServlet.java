@@ -17,6 +17,7 @@ public class RegistrationServlet extends HttpServlet {
     private PlayerManager playerManager;
 
     @Override
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
         final String userName = request.getParameter("username");

@@ -3,7 +3,7 @@
 <html>
 	<%@ include file="components/head.jsp" %>
 	<body>
-		<form method="post" action="<c:url value="/fire"/>">
+		<form id="fire">
 			<table>
 				<tr>
 					<td>
@@ -18,7 +18,10 @@
 					</td>
 				</tr>
 			</table>
-			<button>Fire!</button>
 		</form>
+		<br>
+		<button onclick="postForm()" id="fire-button">Fire!</button>
+		<script>let timeout = 1;</script>
+		<%@ include file="autorefresh.jsp" %>
 	</body>
 </html>

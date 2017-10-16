@@ -19,15 +19,16 @@ public class WaitOpponentRegistrationServlet extends HttpServlet {
     private PlayerManager playerManager;
 
     @Override
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
             throws ServletException, IOException {
         final Game game = playerManager.getGame();
 
         if (game.isComplete()) {
-            resp.sendRedirect(req.getContextPath() + "/placement.jsp");
-        } else {
-            req.getRequestDispatcher("/WEB-INF/wait-opponent-registration.jsp")
-                    .include(req, resp);
+            final String redirectUrl = req.getContextPath() + "/placement.jsp";
+            resp.setHeader("X-Redirect-Url", redirectUrl);
         }
+        req.getRequestDispatcher("/WEB-INF/wait-opponent-registration.jsp")
+                .include(req, resp);
     }
 }
