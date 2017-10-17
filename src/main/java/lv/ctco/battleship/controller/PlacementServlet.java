@@ -14,12 +14,11 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static lv.ctco.battleship.util.GameHelper.AJAX_REDIRECT_HEADER;
+import static lv.ctco.battleship.util.GameHelper.NUMBER_OF_SHIP_PARTS;
 
 @WebServlet(name = "PlacementServlet", urlPatterns = "/placement")
 public class PlacementServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(PlacementServlet.class.getName());
-    private static final int NUMBER_OF_SHIP_PARTS = 1;
 
     @Inject
     private PlayerManager playerManager;

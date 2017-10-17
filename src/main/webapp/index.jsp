@@ -6,7 +6,7 @@
 		<h1>Welcome to Battleship!</h1>
 		<form method="post" action="<c:url value="/registration"/>">
 			<label>Enter your name</label>
-			<input type="text" placeholder="UserName" name="username">
+			<input type="text" placeholder="UserName" name="username" autofocus/>
 			<button class="start">Start</button>
 		</form>
 	</body>

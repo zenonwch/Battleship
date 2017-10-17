@@ -21,6 +21,7 @@
 		</form>
 		<br>
 		<button onclick="postForm()" id="fire-button">Fire!</button>
+		<%@ include file="click-button-on-enter.jsp" %>
 		<script>let timeout = 1;</script>
 		<%@ include file="autorefresh.jsp" %>
 	</body>

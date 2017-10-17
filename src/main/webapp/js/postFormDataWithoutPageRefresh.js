@@ -1,9 +1,6 @@
 function postForm() {
     let req = new XMLHttpRequest();
 
-    let fireButton = document.getElementById("fire-button");
-    fireButton.setAttribute("disabled", "true");
-
     let form = document.getElementById("fire");
     let data = new FormData(form);
 
@@ -14,13 +11,19 @@ function postForm() {
     req.open("POST", window.location.href, true);
     req.send(data);
 
-    req.onreadystatechange = function () {
-        if (XMLHttpRequest.DONE === req.readyState && req.status === 200) {
-            fireButton.removeAttribute("disabled");
+    let fireButton = document.getElementById("fire-button");
+    fireButton.setAttribute("disabled", "true");
 
-            if (!refreshInterval) {
-                refreshInterval = setInterval(getNewData, timeout * 1000);
-            }
+    let inputs = document.getElementsByTagName("input");
+    for(let input of inputs) {
+        input.setAttribute("disabled", "true");
+    }
+
+    req.onreadystatechange = function () {
+        if (XMLHttpRequest.DONE === req.readyState
+            && req.status === 200
+            && !refreshInterval) {
+            refreshInterval = setInterval(getNewData, timeout * 1000);
         }
     };
 }

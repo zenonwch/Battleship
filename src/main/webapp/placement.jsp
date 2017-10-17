@@ -13,6 +13,7 @@
 			<%@ include file="WEB-INF/components/field.jsp" %>
 			<br>
 			<button>Ready</button>
+			<%@ include file="WEB-INF/click-button-on-enter.jsp" %>
 		</form>
 	</body>
 </html>
