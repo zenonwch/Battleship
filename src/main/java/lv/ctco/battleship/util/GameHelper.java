@@ -5,5 +5,5 @@ public final class GameHelper {
 
     public static final String AJAX_REDIRECT_HEADER = "X-Redirect-Url";
 
-    public static final int NUMBER_OF_SHIP_PARTS = 20;
+    public static final int NUMBER_OF_SHIP_PARTS = 1;
 }

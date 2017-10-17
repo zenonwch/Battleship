@@ -41,7 +41,7 @@ public class FireServlet extends HttpServlet {
         if (game.getWinner() != null) {
             final String redirectUrl = request.getContextPath() + "/eog";
             response.addHeader(AJAX_REDIRECT_HEADER, redirectUrl);
-            request.getRequestDispatcher("/eog").include(request, response);
+            request.getRequestDispatcher(redirectUrl).include(request, response);
         }
 
         //noinspection ObjectEquality

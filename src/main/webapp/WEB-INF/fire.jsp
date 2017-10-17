@@ -20,7 +20,8 @@
 			</table>
 		</form>
 		<br>
-		<button onclick="postForm()" id="fire-button">Fire!</button>
+		<button onclick="postForm()" id="fire-button" class="submit">Fire!</button>
+		<button onclick="cancel()">Cancel</button>
 		<%@ include file="click-button-on-enter.jsp" %>
 		<script>let timeout = 1;</script>
 		<%@ include file="autorefresh.jsp" %>

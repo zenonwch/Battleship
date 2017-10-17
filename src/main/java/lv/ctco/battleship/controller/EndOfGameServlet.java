@@ -27,7 +27,7 @@ public class EndOfGameServlet extends HttpServlet {
         final Player winner = game.getWinner();
 
         if (winner == null) {
-            request.getRequestDispatcher("WEB-INF/fire.jsp").include(request, response);
+            request.getRequestDispatcher("/WEB-INF/fire.jsp").include(request, response);
         } else //noinspection ObjectEquality
             if (winner == currentPlayer) {
                 request.getRequestDispatcher("/WEB-INF/winner.jsp").include(request, response);

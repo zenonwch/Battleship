@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static lv.ctco.battleship.util.GameHelper.AJAX_REDIRECT_HEADER;
+
 @WebServlet(name = "WaitOpponentRegistrationServlet",
         urlPatterns = "/wait-opponent-registration")
 public class WaitOpponentRegistrationServlet extends HttpServlet {
@@ -26,7 +28,7 @@ public class WaitOpponentRegistrationServlet extends HttpServlet {
 
         if (game.isComplete()) {
             final String redirectUrl = req.getContextPath() + "/placement.jsp";
-            resp.setHeader("X-Redirect-Url", redirectUrl);
+            resp.setHeader(AJAX_REDIRECT_HEADER, redirectUrl);
         }
         req.getRequestDispatcher("/WEB-INF/wait-opponent-registration.jsp")
                 .include(req, resp);

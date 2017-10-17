@@ -11,12 +11,13 @@ public class Game implements Serializable {
     private Player player2;
     private Player winner;
     private boolean player1Turn = true;
+    private boolean canceled;
 
     public Player getPlayer1() {
         return player1;
     }
 
-    public void setPlayer1(final Player player1) {
+    void setPlayer1(final Player player1) {
         this.player1 = player1;
     }
 
@@ -24,7 +25,7 @@ public class Game implements Serializable {
         return player2;
     }
 
-    public void setPlayer2(final Player player2) {
+    void setPlayer2(final Player player2) {
         this.player2 = player2;
     }
 
@@ -37,6 +38,14 @@ public class Game implements Serializable {
                 && player2 != null && player2.isReady();
     }
 
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(final boolean canceled) {
+        this.canceled = canceled;
+    }
+
     public Player getCurrentPlayer() {
         return player1Turn ? player1 : player2;
     }
@@ -47,6 +56,10 @@ public class Game implements Serializable {
 
     public Player getWinner() {
         return winner;
+    }
+
+    public void setWinner(final Player winner) {
+        this.winner = winner;
     }
 
     @Override
@@ -66,8 +79,7 @@ public class Game implements Serializable {
             current.getOpponentField().set(addr, HIT);
             opposite.getMyField().set(addr, HIT);
             checkWinner();
-        }
-        else if (EMPTY == fired) {
+        } else if (EMPTY == fired) {
             current.getOpponentField().set(addr, MISS);
             opposite.getMyField().set(addr, MISS);
             player1Turn = !player1Turn;
@@ -80,6 +92,6 @@ public class Game implements Serializable {
         if (getOppositePlayer().getMyField().getContent().containsValue(SHIP)) {
             return;
         }
-            winner = getCurrentPlayer();
+        winner = getCurrentPlayer();
     }
 }

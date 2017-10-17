@@ -24,7 +24,8 @@ public class RegistrationServlet extends HttpServlet {
         final Player player = new Player();
         player.setName(userName);
         playerManager.registerPlayer(player);
-        response.sendRedirect(request.getContextPath() + "/wait-opponent-registration");
+        final String redirectServletUrl = request.getContextPath() + "/wait-opponent-registration";
+        response.sendRedirect(redirectServletUrl);
     }
 
 }

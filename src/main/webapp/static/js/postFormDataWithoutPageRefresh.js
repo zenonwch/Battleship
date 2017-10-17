@@ -4,7 +4,9 @@ function postForm() {
     let form = document.getElementById("fire");
     let data = new FormData(form);
 
-    for (let pair of data.entries()) {
+    let pair = "";
+
+    for (pair of data.entries()) {
         console.log(pair[0] + ": " + pair[1]);
     }
 

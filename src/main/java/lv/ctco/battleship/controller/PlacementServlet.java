@@ -50,7 +50,8 @@ public class PlacementServlet extends HttpServlet {
             request.getRequestDispatcher("/placement.jsp").include(request, response);
         } else {
             playerManager.getPlayer().setReady(true);
-            response.sendRedirect(request.getContextPath() + "/wait-opponent-ships");
+            final String redirectServletUrl = request.getContextPath() + "/wait-opponent-ships";
+            response.sendRedirect(redirectServletUrl);
         }
     }
 
